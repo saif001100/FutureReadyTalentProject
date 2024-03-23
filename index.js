@@ -19,7 +19,7 @@ app.use(express.json());
 async function storeFormData(name, email, message) {
     const endpoint = "https://store1902.table.core.windows.net";
     const accountName = "store1902";
-    const accountKey = "deYccxrFiWbLudAoMO5MTd/esLa7AiunR6EXx1221nO6VpKuobEbVGm0YvClW8AvII23fJiruWZV+ASt0J2Ueg==";
+    const accountKey = "deYcfxrFiWbLudAoMO5MTd/esLa7AiunR6EXx1221nO6VpKuobEbVGm0YvClW8AvII23fJiruWZV+ASt0J2Ueg==";
     const credential = new AzureNamedKeyCredential(accountName, accountKey);
     const tableServiceClient = new TableServiceClient(endpoint, credential);
 
