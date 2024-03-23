@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>InnoDecor - Contact Page</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/slick.css"/>
+
+        <link href="css/project.css" rel="stylesheet">
+        
+
+    </head>
+    
+    <body>
+
+        <section class="preloader">
+            <div class="spinner">
+                <span class="sk-inner-circle"></span>
+            </div>
+        </section>
+    
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.html">
+                        <strong><span>Inno</span> Decor</strong>
+                    </a>
+
+                    
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">Story</a>
+                            </li>
+
+                            
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="faq.html">FAQs</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+
+                        
+                </div>
+            </nav>
+
+            
+
+            <section class="contact section-padding">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-lg-6 col-12">
+                            <h2 class="mb-4">Let's <span>begin</span></h2>
+
+
+                            <form class="contact-form me-lg-5 pe-lg-3" role="form" id="contactForm">
+
+
+                                <div class="form-floating">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Full name" required>
+
+                                    <label for="name">Full name</label>
+                                </div>
+
+                                <div class="form-floating my-4">
+                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+
+                                    <label for="email">Email address</label>
+                                </div>
+                                
+
+                                <div class="form-floating mb-4">
+                                    <textarea id="message" name="message" class="form-control" placeholder="Leave a comment here" required style="height: 160px"></textarea>
+
+                                    <label for="message">Tell us about the project</label>
+                                </div>
+
+                                <div class="col-lg-5 col-6">
+                                    <button type="submit" class="form-control">Send</button>
+                                </div>
+                                
+                            </form>
+                            <br>
+                            <!-- Success message to be displayed after form submission -->
+                            <!-- Success message -->
+                            <h6 class="mb-3" id="successMessage">
+                                <b>Please fill out the details and submit the form. Our staff will contact you shortly. Thank you!</b></h6>
+
+                            <script>
+                                document.getElementById('contactForm').addEventListener('submit', async (event) => {
+                                    event.preventDefault(); // Prevent default form submission
+                        
+                                    const formData = new FormData(event.target);
+                                    const name = formData.get('name');
+                                    const email = formData.get('email');
+                                    const message = formData.get('message');
+                        
+                                    try {
+                                        const response = await fetch('/contactForm', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify({
+                                                name,
+                                                email,
+                                                message
+                                            })
+                                        });
+                        
+                                        if (response.ok) {
+                                            /// Show success message
+                                            document.getElementById('successMessage').style.display = 'block';
+                                            console.log('Data sent successfully!');
+                                            // Clear the form
+                                            event.target.reset();
+                                        } else {
+                                            console.error('Failed to send data to server');
+                                        }
+                                    } catch (error) {
+                                        console.error('Error sending data to server:', error);
+                                    }
+                                });
+                            </script>
+                            
+                        
+                            
+                        </div>
+
+                        <div class="col-lg-6 col-12 mt-5 ms-auto">
+                            <div class="row">
+                                <div class="col-6 border-end contact-info">
+                                    <h6 class="mb-3">Company Email </h6>
+
+                                    <p class="text-muted">
+                                        Inno@Decor.com</p>
+                                        
+                                </div>
+
+                                <div class="col-6 contact-info">
+                                	<h6 class="mb-3">Contact Number</h6>
+
+                                    <p class="text-muted">
+                                        9876543210
+                                        </p>
+                                </div>
+
+                                <div class="col-6 border-top border-end contact-info">
+                                    <h6 class="mb-3">Our Office</h6>
+
+                                    <p class="text-muted">Mulund,Mumbai</p>
+                                </div>
+
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-10 me-auto mb-4">
+                        <h4 class="text-white mb-3"><a href="index.html">Inno</a> Decor</h4>
+                        <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">Copyright © 2024 <strong>InnoDecor</strong></p>
+                        <br>
+                        <p class="copyright-text">Designed by InnoDecor </p>
+                    </div>
+
+                    <div class="col-lg-5 col-8">
+                        <h5 class="text-white mb-3">Sitemap</h5>
+
+                        <ul class="footer-menu d-flex flex-wrap">
+                            <li class="footer-menu-item"><a href="index.html" class="footer-menu-link">Home</a></li>
+                            
+                            <li class="footer-menu-item"><a href="about.html" class="footer-menu-link">Story</a></li>
+
+                        
+
+                            <li class="footer-menu-item"><a href="faq.html" class="footer-menu-link">FAQs</a></li>
+
+                            <li class="footer-menu-item"><a href="contact.html" class="footer-menu-link">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/Headroom.js"></script>
+        <script src="js/jQuery.headroom.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>
